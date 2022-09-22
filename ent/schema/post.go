@@ -31,6 +31,6 @@ func (Post) Fields() []ent.Field {
 // Edges of the Post.
 func (Post) Edges() []ent.Edge {
 	return []ent.Edge{
-		edge.To("contents", Content.Type),
+		edge.To("content", Content.Type),
 	}
 }

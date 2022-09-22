@@ -30,7 +30,7 @@ func (Content) Fields() []ent.Field {
 func (Content) Edges() []ent.Edge {
 	return []ent.Edge{
 		edge.From("post", Post.Type).
-			Ref("contents").
+			Ref("content").
 			Unique(),
 	}
 }
