@@ -27,12 +27,6 @@ func Init() (srv *http.Server) {
 		os.Exit(1)
 	}
 
-	// getR := s.router.Methods(http.MethodGet).Subrouter()
-	// getR.HandleFunc("/posts", ).
-	// 	Queries()
-
-	// postR := s.router.Methods(http.MethodPost).Subrouter()
-
 	srv = &http.Server{
 		Addr:    ":4000",
 		Handler: s,
@@ -46,7 +40,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func run() (s *Server, err error) {
-	client, err := Open("postgresql://postgres:faroukhamadi@127.0.0.1/farouk-blog")
+	client, err := open("postgresql://postgres:faroukhamadi@127.0.0.1/farouk-blog")
 	if err != nil {
 		return
 	}
@@ -56,6 +50,7 @@ func run() (s *Server, err error) {
 	sm := mux.NewRouter()
 
 	s = newServer(l, sm, client)
+	s.routes()
 
 	return
 }
